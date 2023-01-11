@@ -5,12 +5,17 @@
 
 --Merge conflict resolution
 
-What I learned:
+What I learned:\n
 -Always commit
+
 -Use descriptive commit messages to differentiate between different merges
+
 -Check commit graph of GitLense to see branches and to help resolve merge conflicts
+
 -to run your own git commands, do it from the terminal at the bottom of the page
+
 -commit, push, pull commands are under source control
+
 -git and GitHub is super powerful, keep that in mind and use it carefully but thuroughly 
 Ways to clone:
 -in terminal: git clone url
