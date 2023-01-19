@@ -49,6 +49,8 @@
 
 Have you ever heard of habit stacking? Habit stacking is a revolutionary way to create and maintain habits: a notoriously difficult task. Habit stacking relies on the "stacking" new habits on habits that already exist in order to help the individual to remember to do them! For example, a habit stack might include stacking drinking a glass of water on top of brushing your teeth. You might commit to the statement "After brushing my teeth, I will drink a glass of water." Voila! A habit stack! The Habit Stacker application makes this process easy by allowing users to input their current habits as well as the habits that they would like to create and generating a habit stack for them that can be printed off or checked off within the application as tasks are completed each day! Habit stacks and progress can be shared in real time among users to generate community motivation to create and stick to new habits!
 
+<img width="767" alt="Habit Stack Mock Up" src="https://user-images.githubusercontent.com/90581594/213339606-98d66ce0-0708-4020-b80b-dc92ca610d2c.png">
+
 -Secure login over HTTPS
 
 -Ability to input current habits, order them, and time-stamp them
