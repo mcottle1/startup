@@ -41,6 +41,16 @@
 
 -insert state(type i to enter insert mode, used to actually type and edit code)
 
+#### Creating an AWS server and connecting to it
+
+-My server public IP address 3.19.232.43
+
+-command to shell into server ssh -i [key pair file] ubuntu@[ip address]
+
+-to verify instance type http://3.19.232.43 into search engine
+
+-aws services is the leader in the field of web services
+
 ## Start-up deliverable - specifications
 
 ### Habit Stacker
