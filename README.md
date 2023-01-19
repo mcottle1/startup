@@ -51,14 +51,18 @@ Have you ever heard of habit stacking? Habit stacking is a revolutionary way to 
 
 <img width="767" alt="Habit Stack Mock Up" src="https://user-images.githubusercontent.com/90581594/213339606-98d66ce0-0708-4020-b80b-dc92ca610d2c.png">
 
+#### Key Features
+
 -Secure login over HTTPS
 
--Ability to input current habits, order them, and time-stamp them
+-Ability to input current habits and order them
 
--Ability to input desired new habits, order them, and time-stamp them in groups with existing habits
+-Ability to input desired new habits, and place them in order within list of current habits
 
--Ability to generate a formatted habit stack
+-Ability to generate a formatted habit stack with check off capabilities
 
--Completed habit stacks from all users displayed in realtime
+-Completed habit stacks from all other users displayed in realtime
+
+-Habit stacks are persistently stored
 
 -Ability to check-off and un-check habits as completed and clear checks for each new day
