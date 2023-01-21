@@ -43,6 +43,8 @@
 
 #### Creating an AWS server and connecting to it
 
+-Used EC2 in AWS
+
 -My server public IP address 3.16.6.15
 
 -command to shell into server ssh -i [key pair file] ubuntu@[ip address]
@@ -50,6 +52,16 @@
 -to verify instance type http://3.16.6.15 into search engine
 
 -aws services is the leader in the field of web services
+
+#### Registering a Domain Name
+
+-Used Route 53 in AWS
+
+-Remeber to watch for reupping domain name
+
+-Name and corresponding IP addresses are saved in DNS
+
+-Remeber to set up root and wildcard record types so that it can be accessed using https:// infront of domain name
 
 ## Start-up deliverable - specifications
 
