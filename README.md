@@ -43,11 +43,11 @@
 
 #### Creating an AWS server and connecting to it
 
--My server public IP address 3.19.232.43
+-My server public IP address 3.16.6.15
 
 -command to shell into server ssh -i [key pair file] ubuntu@[ip address]
 
--to verify instance type http://3.19.232.43 into search engine
+-to verify instance type http://3.16.6.15 into search engine
 
 -aws services is the leader in the field of web services
 
