@@ -85,7 +85,7 @@
 
 #### Simon HTML
 
--<sup>&reg;<sup/> creates superscript
+-sup>&reg;<sup/ creates superscript
 
 -Table is used to create the simon image in html also using an svg
 
@@ -93,8 +93,8 @@
 
 -these two meta lines occur at the top of every page
 
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+meta charset="UTF-8"/
+meta name="viewport" content="width=device-width, initial-scale=1.0"/
 
 -also, don't forget to specify the english language of html at the top of each page
 
@@ -102,7 +102,9 @@
 
 -the -s simon flag on the linux command creates the simon.yourdomainname aspect
 
--<hr/>, <br/>
+-<hr/>
+
+<br/>
 
 ## Start-up deliverable - specifications
 
