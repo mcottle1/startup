@@ -83,6 +83,27 @@
 
 -HTML defines a header (<!DOCTYPE html>) that tells the browser the type and version of the document. You should always include this at the top of the HTML file
 
+#### Simon HTML
+
+-<sup>&reg;<sup/> creates superscript
+
+-Table is used to create the simon image in html also using an svg
+
+-Header, Main, and Footer sections compose each page
+
+-these two meta lines occur at the top of every page
+
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+-also, don't forget to specify the english language of html at the top of each page
+
+-also dont forget <!DOCTYPE html>
+
+-the -s simon flag on the linux command creates the simon.yourdomainname aspect
+
+-<hr/>, <br/>
+
 ## Start-up deliverable - specifications
 
 ### Habit Stacker
