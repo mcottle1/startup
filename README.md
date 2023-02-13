@@ -102,9 +102,38 @@ meta name="viewport" content="width=device-width, initial-scale=1.0"/
 
 -the -s simon flag on the linux command creates the simon.yourdomainname aspect
 
--<hr/>
+#### Simon CSS
+
+- flex and relative positioning
+ 
+  - allows for portrait and landscape orientation on devices
+  
+  - @media used for flex elements
+  
+- css selectors that correlate to items in html
+
+- animation using css (great examples on codepen)
+
+- transform and translate elements
+
+- change font and format
+
+- bootstrap in html
+
+  - header
+  
+  link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    /
+    
+  - can use all sorts of bootstrap elements (carousel, buttons, login page etc.)
 
 <br/>
+
+<hr/>
 
 ## Start-up deliverable - specifications
 
