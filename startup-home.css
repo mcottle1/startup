@@ -194,3 +194,21 @@ a:hover{
     margin-top: auto;
     margin-bottom: auto;
   }
+  .styled-table-shared {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    font-weight:bold;
+    min-width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  .styled-table-shared thead tr {
+    background-color: #b8b5ad;
+    color: black;
+  }
+  .styled-table-shared th,
+  .styled-table-shared td {
+    padding: 10px 10px;
+    text-align: center;
+  }
