@@ -9,7 +9,7 @@
         <header>
           <nav class="nav">
             <div class="nav-main">
-              <div class="logo">Habit<span>Stacker</span></div>
+              <div class="logo">Habit<span class="span2">Stacker</span></div>
               <ul class="nav-links">
                 <li class="nav-link"><a href="build-stack.html">Build Your Stack</a></li>
                 <li class="nav-link"><a href="friends-stacks.html">Your Friends Stacks</a></li>
@@ -18,14 +18,59 @@
               </ul>
             </div>
             <div class="cta">
-              <button class="btn btn-secondary">Log In</button>
+                <a href="login.html"
+                    <button class="btn btn-secondary">Log In</button>
+                </a>
               <button class="btn btn-primary">Get Started</button>
             </div>
           </nav>
         </header>
-            
-    <footer>
-        <h2>Created by Mackenzie Cottle</h2>
+            <main>
+              <section>
+                <div class="login-root">
+                    <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+                        <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+                        </div>
+                        <div class="box-root flex-flex flex-justifyContent--center error">
+                        </div>
+                        <div class="formbg-outer">
+                        <div class="formbg">
+                            <div class="formbg-inner padding-horizontal--48">
+                            <span class="padding-bottom--15">Login to your account<br></span>
+
+                            <form id="stripe-login">
+                                <div class="field padding-bottom--24">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" placeholder="Enter Email">
+                                </div>
+
+                                <div class="field padding-bottom--24">
+                                <div class="grid--50-50">
+                                    <label for="password">Password</label>
+                                </div>
+                                <input type="password" name="password" placeholder="Enter your password" minlength="6">
+                                </div>
+                                <div class="field padding-bottom--24">
+                                <input style="background: blue;" href="about.html" type="submit" value="Login">
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        <div class="footer-link padding-top--24">
+                            <span>Don't Have an account? <a style="color: blue; cursor: pointer;"> Create an Account</a></span>
+                            <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+                            <span><a href="#">Contact</a></span>
+                            <span><a href="#">Privacy & terms</a></span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </section>
+            </main>
+        <footer>
+            <h2>Created by Mackenzie Cottle</h2>
         </footer>
     </body>
 </html>
