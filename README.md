@@ -311,6 +311,35 @@ console.log(x.filter(i => i%2));
 
 console.log(x.filter(i => i%2).filter(r => r%3));
 
+#### Objects and Classes
+
+const fishies = {
+  one: 'purple',
+  two: 'green',
+};
+class Fish {
+  constructor(one, two){
+    this.one = one;
+    this.two = two;
+  }
+    log(){
+      return this.one + " fish, " + this.two + " fish";
+    }
+}
+
+class Colors extends Fish {
+  constructor(one, two, red, blue){
+    super(one, two);
+    this.red = red;
+    this.blue = blue;
+  }
+  log(){
+    return super.log() + ', ' + this.red + ' fish, ' + this.blue + ' fish!';
+  }
+}
+
+const fishy = new Colors('7','9', Object.values(fishies)[0],Object.values(fishies)[1]);
+console.log(fishy.log());
 
 <br/>
 
