@@ -131,6 +131,187 @@ meta name="viewport" content="width=device-width, initial-scale=1.0"/
     
   - can use all sorts of bootstrap elements (carousel, buttons, login page etc.)
 
+### JavaScript
+
+#### Types, Objects, Loops
+
+let x = 1;
+
+const y = 2;
+
+1 === '1';
+// OUTPUT: false
+null === undefined;
+// OUTPUT: false
+'' === false;
+// OUTPUT: false
+
+if (a === 1) {
+  //...
+} else if (b === 2) {
+  //...
+} else {
+  //...
+}
+
+a === 1 ? console.log(1) : console.log('not 1');
+
+if (true && (!false || true)) {
+  //...
+}
+
+for (let i = 0; i < 2; i++) {
+  console.log(i);
+}
+// OUTPUT: 0 1
+
+let i = 0;
+do {
+  console.log(i);
+  i++;
+} while (i < 2);
+// OUTPUT: 0 1
+
+let i = 0;
+while (i < 2) {
+  console.log(i);
+  i++;
+}
+// OUTPUT: 0 1
+
+const obj = { a: 1, b: 'fish' };
+for (const name in obj) {
+  console.log(name);
+}
+// OUTPUT: a
+// OUTPUT: b
+
+const arr = ['a', 'b'];
+for (const name in arr) {
+  console.log(name);
+}
+// OUTPUT: 0
+// OUTPUT: 1
+
+const arr = ['a', 'b'];
+for (const val of arr) {
+  console.log(val);
+}
+// OUTPUT: 'a'
+// OUTPUT: 'b'
+
+let i = 0;
+while (true) {
+  console.log(i);
+  if (i === 0) {
+    i++;
+    continue;
+  } else {
+    break;
+  }
+}
+// OUTPUT: 0 1
+
+#### Functions
+
+function labeler(value, title = 'title') {
+  console.log(`${title}=${value}`);
+}
+
+labeler('fish', 'animal');
+// OUTPUT: animal=fish
+
+##### Anonymous Functions
+
+// Function that takes a function as a parameter
+function doMath(operation, a, b) {
+  return operation(a, b);
+}
+
+// Anonymous function assigned to a variable
+const add = function (a, b) {
+  return a + b;
+};
+
+console.log(doMath(add, 5, 3));
+// OUTPUT: 8
+
+// Anonymous function assigned to a parameter
+console.log(
+  doMath(
+    function (a, b) {
+      return a - b;
+    },
+    5,
+    3
+  )
+);
+// OUTPUT: 2
+
+##### Inner functions
+
+function labeler(value) {
+  function stringLabeler(value) {
+    console.log('string=' + value);
+  }
+  function numberLabeler(value) {
+    console.log('number=' + value);
+  }
+
+  if (typeof value == 'string') {
+    stringLabeler(value);
+  } else if (typeof value == 'number') {
+    numberLabeler(value);
+  }
+}
+
+labeler(5);
+// OUTPUT: number=5
+
+labeler('fish');
+// OUTPUT: string=fish
+
+#### Arrow Functions
+
+function reverseString(str) {
+    return str.split("").reverse().join("");
+}
+const reverse = word => reverseString(word);
+
+console.log(reverse("pizza"));
+console.log(reverse("pasta"));
+
+#### Arrays
+
+const x = [1,2,3,4,5,6,7,8,9];
+
+x.push(10);
+
+x.push(11);
+
+x.pop();
+
+console.log(x);
+
+y = x.slice(0,5);
+
+console.log(y);
+
+z = y.map((i) => i%2);
+
+console.log(y.find(i => i > 4));
+
+console.log(z);
+
+console.log(z.reduce((z, c) => z + c));
+
+console.log(x.filter(i => i%2));
+
+//only prime numbers?
+
+console.log(x.filter(i => i%2).filter(r => r%3));
+
+
 <br/>
 
 <hr/>
