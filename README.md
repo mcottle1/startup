@@ -341,6 +341,22 @@ class Colors extends Fish {
 const fishy = new Colors('7','9', Object.values(fishies)[0],Object.values(fishies)[1]);
 console.log(fishy.log());
 
+#### What I learned from Start-up HTML and CSS deliverable
+
+- Having access to a live update debugger is incredibly vital
+
+- Understanding padding, margins, and measurements is so important
+
+- Understanding how to center something one of the most important things you can learn
+
+- Flex is a difficult concept that will take practice, so don't take advantage of a website that uses it well
+
+- Unsplash is by far the best place to look for images for a site
+
+- Its better to find images first and build a site and a color pallete around it
+
+- always think about "inheritance" when building css and html
+
 <br/>
 
 <hr/>
