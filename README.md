@@ -402,6 +402,46 @@ console.log(multiplyThree(...numbers));
 
 - Example of spread
 
+#### Destructuring
+
+- a unique way to access array and object elements, can incorporate rest as well into destructuring
+- Array destructuring
+
+const destructuring = ["Mackenzie", "Grace", "Cottle"];
+
+const [firstname, middlename, lastname] = destructuring;
+
+- Object destructuring
+
+const person = {fname: 'Jocelyn', mname: 'Elise', lname: 'Carter'};
+
+const {fname, lname} = person;
+
+#### Exceptions
+
+-Try, catch, finally block
+
+try{
+  isMyyyyName("Mackenzie");
+}catch(err){
+  console.log("Error with name guess");
+}finally{
+  console.log("Guess again");
+}
+
+-Fallback
+
+function getScores() {
+  try {
+    const scores = scoringService.getScores();
+    // store the scores so that we can use them later if the network is not available
+    window.localStorage.setItem('scores', scores);
+    return scores;
+  } catch {
+    return window.localStorage.getItem('scores');
+  }
+}
+
 <br/>
 
 <hr/>
