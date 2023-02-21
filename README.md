@@ -357,6 +357,51 @@ console.log(fishy.log());
 
 - always think about "inheritance" when building css and html
 
+#### Regexs
+
+const regex2 = /\w+/g;
+
+const string = "Hello my name is Mackenzie Cottle";
+
+const findArray2 = string.match(regex2);
+
+- returns an array containing each word as an element
+
+console.log(findArray2);
+
+const isPhoneNumber = /\d{3}-\d{3}-\d{4}/g
+
+const phoneNumber = "801-234-5678";
+
+const notANumber = "8012345678";
+
+- verifies phone number syntax
+
+#### Rest and Spread
+
+- Rest
+- use ... before last parameter and you can list as many parameters as you want and they will be put into an array
+- Spread
+- use ... infront of parameter that you pass as an array and it will break it down into the functions parameters
+
+function findMyName(name, ...listOfStrings){
+  return listOfStrings.some((i) => i.includes(name));
+}
+
+console.log(findMyName("Mackenzie", "Hello my name is Joe", "Hello my name is Jeff", "Hello my name is Mackenzie", "Hello my name is David"));
+
+- Example of Rest
+
+function multiplyThree(x,y,z){
+  return x * y * z;
+}
+
+const numbers = [1,2,3];
+
+console.log(multiplyThree(...numbers));
+
+- Example of spread
+
 <br/>
 
 <hr/>
