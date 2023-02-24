@@ -520,6 +520,14 @@ function fail(err){
   console.log('Guess completed:)');
 };
 
+#### Simon Javascript
+
+- Don't forget the script lines
+- script lines can go at the top of the page when no html is being edited, otherwise it needs to go bellow body and footer
+
+<img width="860" alt="Screenshot 2023-02-24 at 4 16 59 PM" src="https://user-images.githubusercontent.com/90581594/221319349-14506fe4-f0f1-4651-9687-148a1cc715ba.png">
+
+
 <br/>
 
 <hr/>
