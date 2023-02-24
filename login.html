@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="login.js"></script>
         <link rel="stylesheet" href="startup-home.css" />
     </head>
     <body>
@@ -37,22 +38,17 @@
                           <div class="formbg">
                             <div class="formbg-inner padding-horizontal--20">
                               <span>Login to your account<br><br></span>
-
-                              <form id="stripe-login">
                                 <div class="field padding-bottom--24">
                                   <label for="email">Email</label>
-                                  <input type="email" name="email" placeholder="Enter Email">
+                                  <input type="email" id="email" placeholder="Enter Email">
                                 </div>
                                 <div class="field padding-bottom--24">
                                     <label for="password">Password</label>
-                                <input type="password" name="password" placeholder="Enter your password" minlength="6">
+                                <input type="password" id="password" placeholder="Enter your password" minlength="6">
                                 </div>
                                 <div class="padding-bottom--24">
-                                    <a href="index.html">
-                                        <button class="btn btn-secondary">Log In</button>
-                                    </a>
+                                  <button class="btn btn-secondary" onclick="login()">Log In</button>
                                 </div>
-                            </form>
                             </div>
                         </div>
                         </div>

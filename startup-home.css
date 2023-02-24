@@ -86,8 +86,8 @@ a:hover{
 }
 
 .btn-primary{
-  background-color:var(--black);
-  color:var(--white);
+  background-color:black;
+  color:white;
   margin-left:8px;
   text-transform: uppercase;
   border:0.1px solid black;
@@ -95,7 +95,7 @@ a:hover{
 
 .btn-secondary{
   text-transform: uppercase;
-  background-color:var(--white);
+  background-color:white;
   color:var(--black);
   border:0.1px solid black;
 }
@@ -190,11 +190,11 @@ a:hover{
   text-align: center;
 }
 .btn-tertiary{
+  display:inline-block;
   background-color:white;
   color:#b39370;
   text-transform: uppercase;
   border:0.1px solid #b39370;
-  margin-left: 500px;
 }
 section{
   margin-left:auto;
