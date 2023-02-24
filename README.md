@@ -442,6 +442,84 @@ function getScores() {
   }
 }
 
+#### DOM
+
+function addRow() {
+      let table = document.getElementById("habitStack");
+      let row = document.createElement("tr")
+      let cell1 = document.createElement("td")
+      let cell2 = document.createElement("td")
+      cell2.setAttribute("class", "center");
+      let cell3 = document.createElement("td")
+      let input = document.createElement("input");
+      cell1.innerHTML = '<input type="text" id="text" name="varText" placeholder="text here" spellcheck required pattern="[Aa].*" />';
+      row.appendChild(cell1);
+      cell2.innerHTML = '<label for="time">Time: </label><input type="time" name="varTime" id="time" />';
+      row.appendChild(cell2);
+      cell3.innerHTML = '<input type="checkbox" id="task1" name="task1" value="task"><label for="task1"> Done for the day!</label>';
+      row.appendChild(cell3);
+      table.appendChild(row);
+   }
+
+function removeRow(){
+  let table = document.getElementById("habitStackTable");
+  var lastRow = table.rows.length - 1;
+  if(lastRow > 1){
+    table.deleteRow(lastRow);
+  }
+}
+
+#### Promise
+
+const pickRandomNumber = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    if (Math.random() > 0.1) {
+      resolve(Math.random() < 0.2 ? '0' : (Math.random() < 0.3 ? '1' : (Math.random() < 0.4 ? '2' : (Math.random() < 0.5 ? '3' : '4'))));
+    } else {
+      reject('no number for you');
+    }
+  }, 10000);
+});
+
+pickRandomNumber
+  .then((result) => console.log(`Random number 0-4: ${result}`))
+  .catch((err) => console.log(`Error: ${err}`))
+  .finally(() => console.log('Guess completed:)'));
+  
+#### Async/Await
+
+function pickRandomNumber() {
+  return new Promise((resolve, reject) => {
+  setTimeout(() => {
+    if (Math.random() > 0.1) {
+      resolve(Math.random() < 0.2 ? '0' : (Math.random() < 0.3 ? '1' : (Math.random() < 0.4 ? '2' : (Math.random() < 0.5 ? '3' : '4'))));
+    } else {
+      reject('no number for you');
+    }
+  }, 50);
+});
+}
+
+async function randNum()
+{
+  try{
+    const response1 = await pickRandomNumber();
+    const response2 = await pass(response1);
+  }catch(response1){
+    const response3 = await fail(response1);
+  }
+}
+
+function pass(result){
+  console.log(`Random number 0-4: ${result}`);
+  console.log('Guess completed:)');
+};
+
+function fail(err){
+  console.log(`Error: ${err}`);
+  console.log('Guess completed:)');
+};
+
 <br/>
 
 <hr/>
