@@ -27,6 +27,7 @@
         <main class="build-background">
           <section></section>
             <section>
+            <span class="logo" id="stackname"></span>
             <table class="styled-table" id="habitStackTable">
                 <thead>
                     <tr>
@@ -37,8 +38,8 @@
                 </thead>
                 <tbody id="habitStack">
                     <tr>
-                        <td><input type="text" id="text" name="varText" placeholder="text here" spellcheck required pattern="[Aa].*" /></td>
-                        <td class='center'><label for="time">Time: </label><input type="time" name="varTime" id="time" /></td>
+                        <td><input type="text" id="text1" name="varText" placeholder="text here" spellcheck required pattern="[Aa].*" /></td>
+                        <td class='center'><label for="time">Time: </label><input type="time" name="varTime" id="time1" /></td>
                         <td><input type="checkbox" id="task1" name="task1" value="task"><label for="task1"> Done for the day!</label></td>
                     </tr>
   
@@ -47,7 +48,7 @@
               <div>
                 <button onclick="addRow()" class="btn btn-tertiary">Add rows</button>
               <button onclick="removeRow()" class="btn btn-tertiary">Remove Rows</button>
-              <button onclick="removeRow()" class="btn btn-tertiary">Submit Stack</button>
+              <button onclick="submitStack()" class="btn btn-tertiary" id="submitButton">Submit Stack</button>
               </div>
         </section>
         <section></section>
