@@ -225,7 +225,7 @@ section:nth-child(2) {
 section:nth-child(3) {
   flex: 1;
 }
-@media (max-width: 1500px) {
+@media (max-width: 1000px) {
 section:nth-child(2) {
   display: block;
   padding-left: 25vw;
@@ -256,6 +256,13 @@ h1 {
   width: 100%;
   max-height: 100vh;
   overflow: hidden;
+}
+.login-root2 {
+  display: flex;
+  width: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+  padding-left:15%;
 }
 .flex-flex {
   display: flex;

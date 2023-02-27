@@ -1,26 +1,29 @@
 function loadTables(){
     let htmlTableIDs = ["one", "two","three","four","five","six"];
-    let tabels = [];
-    const tablesText = localStorage.getItem('tables');
-    if(tablesText){
-        tabels = JSON.parse(tablesText);
+    let users = [];
+    const usersText = localStorage.getItem('users');
+    if(usersText){
+        users = JSON.parse(usersText);
     }
 
-    if(tabels.length){
-        for(const [i, table] of tabels.entries()){
+    if(users.length){
+        for(let i = 0; i < users.length; i++){
             const tableBody = document.getElementById(htmlTableIDs[i]);
-            for(let j = 0; j < table.habits.length; j++){
-                let row = document.createElement('tr');
-                let cell1 = document.createElement('td');
-                let cell2 = document.createElement('td');
-                let cell3 = document.createElement('td');
-                cell1.textContent = table.habits[j];
-                cell2.textContent = table.times[j];
-                cell3.textContent = table.completion[j];
-                row.appendChild(cell1);
-                row.appendChild(cell2);
-                row.appendChild(cell3);
-                tableBody.appendChild(row);
+            tableBody.innerHTML = '';
+            let table = [];
+            const tableText = localStorage.getItem('table' + users[i]);
+            if(tableText){
+                table = JSON.parse(tableText);
+            }
+            for(let j = 0; j < table.length; j++){
+                let row = tableBody.insertRow();
+                let cell1 = row.insertCell();
+                let cell2 = row.insertCell();
+                cell2.setAttribute("class", "center");
+                let cell3 = row.insertCell();
+                cell1.innerHTML = table[j].habit;
+                cell2.innerHTML =  table[j].time;
+                cell3.innerHTML = '<input type="checkbox" id="task1" name="task1" value="task"><label for="task1"> Done for the day!</label>';
             }
         }
     }

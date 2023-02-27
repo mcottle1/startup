@@ -1,93 +1,110 @@
-let rowCounter = 0;
+var arr = new Array();
 function addRow() {
+    getData();
     let table = document.getElementById("habitStack");
-    let row = table.insertRow();
-    let cell1 = row.insertCell();
-    let cell2 = row.insertCell();
-    cell2.setAttribute("class", "center");
-    let cell3 = row.insertCell();
-    cell1.innerHTML = document.getElementById("habit").value;
-    row.appendChild(cell1);
-    cell2.innerHTML =  document.getElementById("time").value;
-    row.appendChild(cell2);
-    cell3.innerHTML = '<input type="checkbox" id="task1" name="task1" value="task"><label for="task1"> Done for the day!</label>';
-    row.appendChild(cell3);
     if(table.rows.length < 10){
-        table.appendChild(row);
+        arr.push({
+            habit:document.getElementById("habit").value,
+            time:document.getElementById("time").value
+        })
+        localStorage.setItem('table' + localStorage.getItem('userName'), JSON.stringify(arr));
+        showData();
+        document.getElementById("habit").value = "";
+        document.getElementById("time").value = "";
     }
-    document.getElementById("habit").value = "";
-    document.getElementById("time").value = "";
  }
 
-function removeRow(){
-    let table = document.getElementById("habitStackTable");
-    var lastRow = table.rows.length - 1;
-    if(lastRow > 0){
-        table.deleteRow(lastRow);
+ function getData(){
+    var str = localStorage.getItem('table' + localStorage.getItem('userName'));
+    if(str != null){
+        arr = JSON.parse(str);
     }
-}
+ }
 
-function submitStack(){
-    // save contents to memory some how using json, to a disk or server or database
-    saveTable();
-    let selectButton = document.getElementById("submitButton");
-    let clearButton = document.createElement("button");
-    clearButton.setAttribute("class","btn btn-tertiary");
-    clearButton.setAttribute("id","clear-button");
-    clearButton.textContent = "Clear Stack";
-    selectButton.insertAdjacentHTML("afterEnd",'<button onclick="clearStack()" class="btn btn-tertiary" id="clearButtony">Clear Stack</button>');
+ function showData(){
+    let table = document.getElementById("habitStack");
+    table.innerHTML = '';
+    for(i = 0; i < arr.length; i++){
+        let row = table.insertRow();
+        let cell1 = row.insertCell();
+        let cell2 = row.insertCell();
+        cell2.setAttribute("class", "center");
+        let cell3 = row.insertCell();
+        cell1.innerHTML = arr[i].habit;
+        cell2.innerHTML =  arr[i].time;
+        cell3.innerHTML = '<input type="checkbox" id="task1" name="task1" value="task"><label for="task1"> Done for the day!</label>';
+    }
+ }
+
+
+function removeRow(){
+    arr.pop();
+    localStorage.setItem('table' + getPlayerName(), JSON.stringify(arr));
+    showData();
 }
 
 function clearStack(){
-    rowCounter = 0;
-    let clearButton = document.getElementById("clearButtony");
-    clearButton.remove();
-    let table = document.getElementById("habitStackTable");
-    var lastRow = table.rows.length - 1;
-    for(let i = 0; i < lastRow; i++){
-      removeRow();
-    }
-    table.deleteRow(1);
-    addRow();
+    arr = [];
+    localStorage.setItem('table' + getPlayerName(), JSON.stringify(arr));
+    showData();
 }
 
-function saveTable(){
-    const userName = localStorage.getItem('userName') ?? 'Mystery user';
-    let tabels = [];
-    const tablesText = localStorage.getItem('tables');
-    if(tablesText){
-        tabels = JSON.parse(tablesText);
-    }
-     tabels = this.updateTables(userName, tabels);
-     localStorage.setItem('tables', JSON.stringify(tabels));
-}
+const interval = setInterval(function(){
+    let table = document.getElementById("habitStack");
+    
+}, 5000)
 
-function updateTables(userName, tables){
-    const habits = [];
-    const times = [];
-    const completion = [];
-    let table = document.getElementById("habitStackTable");
-    for (let i = 0; i < table.rows.length; i++) {
-        habits.push(document.getElementById("text" + i.toString).value);
-        times.push(document.getElementById("time" + i.toString).value);
-        completion.push(document.getElementById("task" + i.toString).value);  
+function loadinitial(){
+    const builderNameElement = document.querySelector('#stackname');
+    builderNameElement.textContent = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0Welcome, ' + getPlayerName();
+    let tableEl = document.getElementById("habitStack");
+    const tableText = localStorage.getItem('table' + getPlayerName());
+    if(tableText){
+        arr = JSON.parse(tableText);
     }
-    const newTable = {name: userName, habits: habits, times: times, completion: completion};
-    tables.push(newTable);
-    if(tables.length > 6){
-        tables.length = 6;
-    }
-    return tables;
-}
-
-class Stack{
-    constructor(){
-        const builderNameElement = document.querySelector('#stackname');
-        builderNameElement.textContent = '\xa0\xa0\xa0\xa0\xa0\xa0Welcome, ' + this.getPlayerName();
-    }
-    getPlayerName() {
-        return localStorage.getItem('userName') ?? 'Mystery player';
+    for(let j = 0; j < arr.length; j++){
+        let row = tableEl.insertRow();
+        let cell1 = row.insertCell();
+        let cell2 = row.insertCell();
+        cell2.setAttribute("class", "center");
+        let cell3 = row.insertCell();
+        cell1.innerHTML = arr[j].habit;
+        cell2.innerHTML =  arr[j].time;
+        cell3.innerHTML = '<input type="checkbox" id="task1" name="task1" value="task"><label for="task1"> Done for the day!</label>';
     }
 }
 
-const build = new Stack();
+function getPlayerName() {
+    return localStorage.getItem('userName') ?? 'Mystery player';
+}
+
+loadinitial();
+
+// class Stack{
+//     constructor(){
+//         const builderNameElement = document.querySelector('#stackname');
+//         builderNameElement.textContent = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0Welcome, ' + this.getPlayerName();
+//         let table = document.getElementById("habitStack");
+//         table.innerHTML = '';
+//         const tableText = localStorage.getItem('table' + users[i]);
+//         if(tableText){
+//             arr = JSON.parse(tableText);
+//         }
+    
+//         for(i = 0; i < arr.length; i++){
+//             let row = table.insertRow();
+//             let cell1 = row.insertCell();
+//             let cell2 = row.insertCell();
+//             cell2.setAttribute("class", "center");
+//             let cell3 = row.insertCell();
+//             cell1.innerHTML = arr[i].habit;
+//             cell2.innerHTML =  arr[i].time;
+//             cell3.innerHTML = '<input type="checkbox" id="task1" name="task1" value="task"><label for="task1"> Done for the day!</label>';
+//         }
+//     }
+//     getPlayerName() {
+//         return localStorage.getItem('userName') ?? 'Mystery player';
+//     }
+// }
+
+// const build = new Stack();
