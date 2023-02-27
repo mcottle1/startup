@@ -1,25 +1,28 @@
+let rowCounter = 0;
 function addRow() {
     let table = document.getElementById("habitStack");
-    let row = document.createElement("tr");
-    let cell1 = document.createElement("td");
-    let cell2 = document.createElement("td");
+    let row = table.insertRow();
+    let cell1 = row.insertCell();
+    let cell2 = row.insertCell();
     cell2.setAttribute("class", "center");
-    let cell3 = document.createElement("td");
-    cell1.innerHTML = '<input type="text" id="text' + (table.rows.length-1).toString + '" name="varText" placeholder="text here" spellcheck required pattern="[Aa].*" />';
+    let cell3 = row.insertCell();
+    cell1.innerHTML = document.getElementById("habit").value;
     row.appendChild(cell1);
-    cell2.innerHTML = '<label for="time">Time: </label><input type="time" name="varTime" id="time' + (table.rows.length-1).toString + '" />';
+    cell2.innerHTML =  document.getElementById("time").value;
     row.appendChild(cell2);
-    cell3.innerHTML = '<input type="checkbox" id="task' + (table.rows.length-1).toString + '" name="task1" value="task"><label for="task1"> Done for the day!</label>';
+    cell3.innerHTML = '<input type="checkbox" id="task1" name="task1" value="task"><label for="task1"> Done for the day!</label>';
     row.appendChild(cell3);
     if(table.rows.length < 10){
         table.appendChild(row);
     }
+    document.getElementById("habit").value = "";
+    document.getElementById("time").value = "";
  }
 
 function removeRow(){
     let table = document.getElementById("habitStackTable");
     var lastRow = table.rows.length - 1;
-    if(lastRow > 1){
+    if(lastRow > 0){
         table.deleteRow(lastRow);
     }
 }
@@ -36,6 +39,7 @@ function submitStack(){
 }
 
 function clearStack(){
+    rowCounter = 0;
     let clearButton = document.getElementById("clearButtony");
     clearButton.remove();
     let table = document.getElementById("habitStackTable");
@@ -63,7 +67,7 @@ function updateTables(userName, tables){
     const times = [];
     const completion = [];
     let table = document.getElementById("habitStackTable");
-    for (let i = 1; i < table.rows.length; i++) {
+    for (let i = 0; i < table.rows.length; i++) {
         habits.push(document.getElementById("text" + i.toString).value);
         times.push(document.getElementById("time" + i.toString).value);
         completion.push(document.getElementById("task" + i.toString).value);  
@@ -79,7 +83,7 @@ function updateTables(userName, tables){
 class Stack{
     constructor(){
         const builderNameElement = document.querySelector('#stackname');
-        builderNameElement.textContent = 'Welcome, ' + this.getPlayerName();
+        builderNameElement.textContent = '\xa0\xa0\xa0\xa0\xa0\xa0Welcome, ' + this.getPlayerName();
     }
     getPlayerName() {
         return localStorage.getItem('userName') ?? 'Mystery player';

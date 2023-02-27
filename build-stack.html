@@ -25,9 +25,35 @@
           </nav>
         </header>
         <main class="build-background">
-          <section></section>
-            <section>
+          <section>
             <span class="logo" id="stackname"></span>
+            <div class="login-root2">
+                <div class="padding-top--5 flex-flex">
+                    <div class="padding-bottom--24 flex-flex padding-bottom--0">
+                    </div>
+                    <div class="formbg-outer">
+                      <div class="formbg">
+                        <div class="formbg-inner padding-horizontal--20">
+                          <span>Add Your Habits to Your Stack!<br><br></span>
+                            <div class="field padding-bottom--24">
+                              <label for="habit">Habit</label>
+                              <input type="habit" id="habit" placeholder="Enter Habit"/>
+                              <label for="time">Time: </label>
+                              <input type="time" name="varTime" id="time"/>
+                            </div>
+                            <div class="padding-bottom--24">
+                              <button onclick="addRow()" class="btn btn-tertiary" >Add to Stack</button>
+                              <button onclick="removeRow()" class="btn btn-tertiary">Remove Entry</button>
+                              <button onclick="submitStack()" class="btn btn-tertiary" id="submitButton">Submit Stack</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+              </section>
+            <section>
+            <p class="logo2" id="stackname"></p>
             <table class="styled-table" id="habitStackTable">
                 <thead>
                     <tr>
@@ -37,21 +63,9 @@
                     </tr>
                 </thead>
                 <tbody id="habitStack">
-                    <tr>
-                        <td><input type="text" id="text1" name="varText" placeholder="text here" spellcheck required pattern="[Aa].*" /></td>
-                        <td class='center'><label for="time">Time: </label><input type="time" name="varTime" id="time1" /></td>
-                        <td><input type="checkbox" id="task1" name="task1" value="task"><label for="task1"> Done for the day!</label></td>
-                    </tr>
-  
                 </tbody>
              </table>
-              <div>
-                <button onclick="addRow()" class="btn btn-tertiary">Add rows</button>
-              <button onclick="removeRow()" class="btn btn-tertiary">Remove Rows</button>
-              <button onclick="submitStack()" class="btn btn-tertiary" id="submitButton">Submit Stack</button>
-              </div>
         </section>
-        <section></section>
     </main>
     <footer>
         <h2 class="text">Created by Mackenzie Cottle</h2>
