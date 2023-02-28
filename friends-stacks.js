@@ -12,6 +12,11 @@ function loadTables(){
             tableBody.innerHTML = '';
             let table = [];
             const tableText = localStorage.getItem('table' + users[i]);
+            var str2 = localStorage.getItem('boxes' + users[i]);
+            let boxes = [];
+            if(str2 != null){
+                boxes = JSON.parse(str2);
+            }
             if(tableText){
                 table = JSON.parse(tableText);
             }
@@ -23,7 +28,11 @@ function loadTables(){
                 let cell3 = row.insertCell();
                 cell1.innerHTML = table[j].habit;
                 cell2.innerHTML =  table[j].time;
-                cell3.innerHTML = '<input type="checkbox" id="task1" name="task1" value="task"><label for="task1"> Done for the day!</label>';
+                if(boxes[j]){
+                    cell3.innerHTML = '<input type="checkbox" id="task" name="task1" value="task" checked><label for="task1"> Done for the day!</label>';
+                }else{
+                    cell3.innerHTML = '<input type="checkbox" id="task" name="task1" value="task"><label for="task1"> Done for the day!</label>';
+                }
             }
         }
     }
