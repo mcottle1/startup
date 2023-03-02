@@ -7,6 +7,8 @@ function login() {
     if(usersText){
         users = JSON.parse(usersText);
     }
-     users.push(nameEl.value);
+    if(!users.includes(nameEl.value)){
+        users.push(nameEl.value);
+    }
      localStorage.setItem('users', JSON.stringify(users));
   }

@@ -19,6 +19,18 @@ function loadTables(){
             }
             if(tableText){
                 table = JSON.parse(tableText);
+                if(table.length > 0){
+                    const builderNameElement = document.getElementById('stackname' + htmlTableIDs[i]);
+                    builderNameElement.textContent = users[i];
+                    var header = tableBody.createTHead();
+                    var row = header.insertRow(0);
+                    var cell1H = row.insertCell(0);
+                    var cell2H = row.insertCell(1);
+                    var cell3H = row.insertCell(2);
+                    cell1H.innerText = "Habit";
+                    cell2H.innerText = "Time of Day";
+                    cell3H.innerText = "Completion Status";
+                }
             }
             for(let j = 0; j < table.length; j++){
                 let row = tableBody.insertRow();

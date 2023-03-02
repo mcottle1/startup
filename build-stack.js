@@ -8,7 +8,9 @@ function addRow() {
             habit:document.getElementById("habit").value,
             time:document.getElementById("time").value,
         })
+        boxes.push(false);
         localStorage.setItem('table' + localStorage.getItem('userName'), JSON.stringify(arr));
+        localStorage.setItem('boxes' + getPlayerName(), JSON.stringify(boxes));
         showData();
         document.getElementById("habit").value = "";
         document.getElementById("time").value = "";
@@ -50,13 +52,17 @@ function addRow() {
 function removeRow(){
     getData();
     arr.pop();
+    boxes.pop();
     localStorage.setItem('table' + getPlayerName(), JSON.stringify(arr));
+    localStorage.setItem('boxes' + getPlayerName(), JSON.stringify(boxes));
     showData();
 }
 
 function clearStack(){
     getData();
     arr = [];
+    boxes = [];
+    localStorage.setItem('boxes' + getPlayerName(), JSON.stringify(boxes));
     localStorage.setItem('table' + getPlayerName(), JSON.stringify(arr));
     showData();
 }
