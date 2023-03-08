@@ -527,6 +527,91 @@ function fail(err){
 
 <img width="860" alt="Screenshot 2023-02-24 at 4 16 59 PM" src="https://user-images.githubusercontent.com/90581594/221319349-14506fe4-f0f1-4651-9687-148a1cc715ba.png">
 
+#### Notes from Midterm Review
+
+- HTML div creates a division element
+
+- CNAME points one DNS record to another DNS record
+
+- CNAME is an alias, a pointer to another record
+
+- A record points to an IP address
+
+- You CAN use CSS to load fonts from Google
+
+- Look up this syntax
+
+- Get Code from the promise question
+
+- burger fries taco shake noodles
+
+- If you want the catch to be called then you would reject instead of resolve or throw an exception
+
+- Valid JSON {"x":3}
+
+- div.header { color: blue; }
+
+- invalid to say <javascript> some stuff
+
+- Can say <div onclick = 1+1
+
+- /A|f/i i means case insensitive, so anything with an a ro an f will work 
+
+- function f(x) = {} not valid function syntax
+
+- function f(x) {}
+
+- const f = function(x) {}
+
+- const f = (x) => {}
+
+- all valid
+
+- padding puts space around the content of the selected element
+
+- pals before marriage- padding, border, marriage
+
+- content, padding, border, margin
+
+- .join joins all elements together
+
+- reduce, map, sum ect
+
+- html tag for unordered list ul
+
+- document.querySelector('p').Addeventlistener('mouseover', console.log);
+
+- adds a mouseover event listener to a p element
+
+- valid hyperlinks use a element tags and href
+
+- src is for image tags
+
+- ASYNC await vs promise: promise means other code will run, async await means all code that runs after will be delayed ie all other code waits for the waiat call to be resolved
+
+- Rejected throws exception
+
+- If you omit the await, it won't await
+
+-DOM textContext sets the cild text for an element
+
+- DNS subdomain cs260.cs.byu.edu the whole thing is the subdomain
+
+- Column-reverse flips the column completely upside down
+
+- Two things in two seperate p blocks will appear on two seperate elements
+
+- {n:1} javaScript object
+
+- console commans that makes a script executable chmod +x deploy.sh
+
+- ls -la deploy.sh writes to standard output the contents of each specified Directory or the name of each specified File
+
+- sudo deploy.sh lets us use our account and password to execute system commands with root privileges
+
+- ssh deploy.sh provides a secure encrypted connection between two hosts over an insecure network. This connection can also be used for terminal access, file transfers, and for tunneling other applications
+
+
 
 <br/>
 
