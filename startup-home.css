@@ -25,6 +25,7 @@ main {
   flex-direction: row;
   background-color: #f9f4eb;
   min-height:88vh;
+  max-height: fit-content;
 }
 p{
   font-size:16px;
@@ -211,7 +212,7 @@ section{
   -ms-flex-pack: center;
   justify-content: center;
   align-items: center;
-  max-height:100vh;
+  max-height: fit-content;
 }
 section > p:first-of-type{
   text-align: center;
