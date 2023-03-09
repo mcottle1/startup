@@ -611,6 +611,18 @@ function fail(err){
 
 - ssh deploy.sh provides a secure encrypted connection between two hosts over an insecure network. This connection can also be used for terminal access, file transfers, and for tunneling other applications
 
+#### What I learned from Startup Javascript deliverable
+
+- How to work with local storage to save and repopulate data elsewhere on the site
+
+- The importance of where and how you call your functions in javascript, and the flexibility that this creates
+
+- the difference between querySelector, getElementByID, and querySelectorAll
+
+- How important it is to understand the dom and how powerful it can be
+
+- The importance of HOW you store your information into variables so that it can be accessed across your javascript but also within and across specific functions (ie the checkboxes debacle
+
 #### URL
 
 Uniform resource locator
