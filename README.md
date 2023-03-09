@@ -593,7 +593,7 @@ function fail(err){
 
 - If you omit the await, it won't await
 
--DOM textContext sets the cild text for an element
+- DOM textContext sets the cild text for an element
 
 - DNS subdomain cs260.cs.byu.edu the whole thing is the subdomain
 
