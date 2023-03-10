@@ -768,6 +768,18 @@ query {
   }
 }
 ```
+   
+#### Node.JS
+   
+- Allows us to interact directly with the server using javascript. one language to rule them all haha
+   
+- Node.JS packages
+   
+- Package.json
+   
+This file contains three main things: 1) Metadata about your project such as its name and the default entry JavaScript file, 2) commands that you can execute to do things like run, test, or distribute your code, and 3) packages that this project depends upon.
+   
+With JavaScript we can write code that listens on a server port (e.g. 8080), receives HTTP requests, processes them, and then responds. We can use this to create a simple web service that we then execute using Node.js.
 
 <br/>
 
