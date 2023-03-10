@@ -720,6 +720,55 @@ Headers
 
 #### Service Design
 
+
+⚠ Note that service endpoints are often called an Application Programming Interface (API). This is a throwback to old desktop applications and the programming interfaces that they exposed. Sometimes the term API refers to the entire collection of endpoints, and sometimes it is used to refer to a single endpoint.
+
+Things to consider
+
+- Grammatical
+
+- Readable
+
+- Discoverable
+
+- Compatible
+
+- Simple
+
+- Documented
+
+Remote Procedure Calls (RPC) expose service endpoints as simple function calls. When RPC is used over HTTP it usually just leverages the POST HTTP verb.
+
+
+```http
+POST /updateOrder HTTP/2
+
+{"id": 2197, "date": "20220505"}
+```
+
+Representational State Transfer (REST) attempts to take advantage of the foundational principles of HTTP. REST HTTP verbs always act upon a resource. Operations on a resource impact the state of the resource as it is transferred by a REST endpoint call. This allows for the caching functionality of HTTP to work optimally. For example, GET will always return the same resource until a PUT is executed on the resource. When PUT is used, the cached resource is replaced with the updated resource.
+
+
+```http
+PUT /order/2197 HTTP/2
+
+{"date": "20220505"}
+```
+
+GraphQL focuses on the manipulation of data instead of a function call (RPC) or a resource (REST). The heart of GraphQL is a query that specifies the desired data and how it should be joined and filtered
+
+```graphql
+query {
+  getOrder(id: "2197") {
+    orders(filter: { date: { allofterms: "20220505" } }) {
+      store
+      description
+      orderedBy
+    }
+  }
+}
+```
+
 <br/>
 
 <hr/>
