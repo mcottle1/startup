@@ -822,6 +822,73 @@ app.get('/store/provo', (req, res, next) => {
 });
 ```
 
+#### Debugging
+
+Fn->F5 to bring up node.js debugger
+
+npm install -g nodemon to install nodemon globally
+
+#### PM2
+
+When you run a program from the console the program will automatically terminate when you close the console or if the computer restarts. In order to keep programs running after a shutdown you need to register it as a daemon. 
+
+#### UI Testing
+
+Playwright 
+
+npm init playwright@latest
+
+Next, you want to install the Playwright extension for VS Code. Go to the extensions tab in VS Code and search for, and install, Playwright Test for VSCode.
+
+#### Endpoint testing
+
+npm install supertest -D
+
+#### What I learned from Simon Service
+
+- Fetch calls used to add the quote and image to the about page
+
+- Load scores using fetch and set locak storage to json string of response
+
+Deploy.sh file
+
+# Step 1
+printf "\n----> Build the distribution package\n"
+rm -rf dist
+mkdir dist
+cp -r public dist
+cp *.js dist
+cp package* dist
+
+# Step 2
+printf "\n----> Clearing out previous distribution on the target\n"
+ssh -i "$key" ubuntu@$hostname << ENDSSH
+rm -rf services/${service}
+mkdir -p services/${service}
+ENDSSH
+
+# Step 3
+printf "\n----> Copy the distribution package to the target\n"
+scp -r -i "$key" dist/* ubuntu@$hostname:services/$service
+
+# Step 4
+printf "\n----> Deploy the service on the target\n"
+ssh -i "$key" ubuntu@$hostname << ENDSSH
+cd services/${service}
+npm install
+pm2 restart ${service}
+ENDSSH
+
+# Step 5
+printf "\n----> Removing local copy of the distribution package\n"
+rm -rf dist
+
+- Index.js
+
+- get router, post router, use router sends index.html file
+
+- Update scores is used in post request
+
 <br/>
 
 <hr/>
