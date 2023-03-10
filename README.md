@@ -781,6 +781,47 @@ This file contains three main things: 1) Metadata about your project such as its
    
 With JavaScript we can write code that listens on a server port (e.g. 8080), receives HTTP requests, processes them, and then responds. We can use this to create a simple web service that we then execute using Node.js.
 
+#### Node.js
+
+npm install http
+
+```js
+const http = require('http');
+const server = http.createServer(function (req, res) {
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.write('<h1>Hello Node.js!</h1>');
+  res.end();
+});
+
+server.listen(8080, () => {
+  console.log(`Web service listening on port 8080`);
+});
+```
+
+```sh
+➜ node main.js
+Web service listening on port 8080
+```
+
+#### Express
+
+```sh
+➜ npm install express
+```
+
+```js
+const express = require('express');
+const app = express();
+
+app.listen(8080);
+
+```
+```js
+app.get('/store/provo', (req, res, next) => {
+  res.send({ name: 'provo' });
+});
+```
+
 <br/>
 
 <hr/>
