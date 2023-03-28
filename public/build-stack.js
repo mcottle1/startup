@@ -1,5 +1,6 @@
 var arr = new Array();
 var boxes = new Array();
+const loginInnerHTML = '<div class="padding-top--5 flex-flex"><div class="padding-bottom--24 flex-flex padding-bottom--0"></div><div class="formbg-outer"><div class="formbg"><div class="formbg-inner padding-horizontal--20"><span>Add Your Habits to Your Stack!<br><br></span><div class="field padding-bottom--24"><label for="habit">Habit</label><input type="habit" id="habit" placeholder="Enter Habit"/><label for="time">Time </label><input type="time" name="varTime" id="time"/></div><div class="padding-bottom--24"><button onclick="addRow()" class="btn btn-tertiary" >Add Habit</button><button onclick="removeRow()" class="btn btn-tertiary">Remove</button><button onclick="clearStack()" class="btn btn-tertiary">Clear</button><button onclick="checkBox()" class="btn btn-tertiary">Update</button></div></div></div></div></div>';
 function addRow() {
     getData();
     let table = document.getElementById("habitStack");
@@ -135,27 +136,36 @@ function delay(milliseconds) {
 
   window.addEventListener('resize', function() {
     let builder = document.getElementById("movedBuilder");
+    let ogbuilder = document.getElementById("ogBuilder");
     if (window.innerWidth < 1000) {
-      builder.innerHTML = '<div class="padding-top--5 flex-flex"><div class="padding-bottom--24 flex-flex padding-bottom--0"></div><div class="formbg-outer"><div class="formbg"><div class="formbg-inner padding-horizontal--20"><span>Add Your Habits to Your Stack!<br><br></span><div class="field padding-bottom--24"><label for="habit">Habit</label><input type="habit" id="habit" placeholder="Enter Habit"/><label for="time">Time </label><input type="time" name="varTime" id="time"/></div><div class="padding-bottom--24"><button onclick="addRow()" class="btn btn-tertiary" >Add Habit</button><button onclick="removeRow()" class="btn btn-tertiary">Remove</button><button onclick="clearStack()" class="btn btn-tertiary">Clear</button><button onclick="checkBox()" class="btn btn-tertiary">Update</button></div></div></div></div></div>';
+        ogbuilder.innerHTML = '';
+        builder.innerHTML = loginInnerHTML;
     } else{
         builder.innerHTML = '';
+        ogbuilder.innerHTML = loginInnerHTML;
     }
   });
 
   window.addEventListener('beforeunload', function(event) {
     let builder = document.getElementById("movedBuilder");
+    let ogbuilder = document.getElementById("ogBuilder");
     if (window.innerWidth < 1000) {
-      builder.innerHTML = '<div class="padding-top--5 flex-flex"><div class="padding-bottom--24 flex-flex padding-bottom--0"></div><div class="formbg-outer"><div class="formbg"><div class="formbg-inner padding-horizontal--20"><span>Add Your Habits to Your Stack!<br><br></span><div class="field padding-bottom--24"><label for="habit">Habit</label><input type="habit" id="habit" placeholder="Enter Habit"/><label for="time">Time </label><input type="time" name="varTime" id="time"/></div><div class="padding-bottom--24"><button onclick="addRow()" class="btn btn-tertiary" >Add Habit</button><button onclick="removeRow()" class="btn btn-tertiary">Remove</button><button onclick="clearStack()" class="btn btn-tertiary">Clear</button><button onclick="checkBox()" class="btn btn-tertiary">Update</button></div></div></div></div></div>';
+        ogbuilder.innerHTML = '';
+        builder.innerHTML = loginInnerHTML;
     } else{
         builder.innerHTML = '';
+        ogbuilder.innerHTML = loginInnerHTML;
     }
   });
 
   document.addEventListener('DOMContentLoaded', function() {
     let builder = document.getElementById("movedBuilder");
+    let ogbuilder = document.getElementById("ogBuilder");
     if (window.innerWidth < 1000) {
-      builder.innerHTML = '<div class="padding-top--5 flex-flex"><div class="padding-bottom--24 flex-flex padding-bottom--0"></div><div class="formbg-outer"><div class="formbg"><div class="formbg-inner padding-horizontal--20"><span>Add Your Habits to Your Stack!<br><br></span><div class="field padding-bottom--24"><label for="habit">Habit</label><input type="habit" id="habit" placeholder="Enter Habit"/><label for="time">Time </label><input type="time" name="varTime" id="time"/></div><div class="padding-bottom--24"><button onclick="addRow()" class="btn btn-tertiary" >Add Habit</button><button onclick="removeRow()" class="btn btn-tertiary">Remove</button><button onclick="clearStack()" class="btn btn-tertiary">Clear</button><button onclick="checkBox()" class="btn btn-tertiary">Update</button></div></div></div></div></div>';
+        ogbuilder.innerHTML = '';
+        builder.innerHTML = loginInnerHTML;
     } else{
         builder.innerHTML = '';
+        ogbuilder.innerHTML = loginInnerHTML;
     }
   });
