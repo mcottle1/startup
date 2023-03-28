@@ -355,3 +355,13 @@ form{
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.vertical{
+  flex-direction: row;
+}
+
+@media (max-width: 600px) {
+  .vertical {
+    flex-direction: column;
+  }
+}

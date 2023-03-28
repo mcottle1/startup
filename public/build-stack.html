@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="startup-home.css" />
+    </head>
+    <body>
+        <header>
+          <nav class="nav">
+            <div class="nav-main">
+              <div class="logo">Habit<span class="span2">Stacker</span></div>
+              <ul class="nav-links">
+                <li class="nav-link"><a href="build-stack.html">Build Your Stack</a></li>
+                <li class="nav-link"><a href="friends-stacks.html">Your Friends Stacks</a></li>
+                <li class="nav-link"><a href="index.html">About Us</a></li>
+                <li class="nav-link"><a href="contact-us.html">Contact Us</a></li>
+              </ul>
+            </div>
+            <div class="cta">
+                <a href="login.html">
+                    <button class="btn btn-secondary">Log In</button>
+                </a>
+            </div>
+          </nav>
+        </header>
+        <main class="build-background">
+            <section>
+              <span class="logo" id="stackname"></span>
+              <div class="login-root2">
+                  <div class="padding-top--5 flex-flex">
+                      <div class="padding-bottom--24 flex-flex padding-bottom--0">
+                      </div>
+                      <div class="formbg-outer">
+                        <div class="formbg">
+                          <div class="formbg-inner padding-horizontal--20">
+                            <span>Add Your Habits to Your Stack!<br><br></span>
+                              <div class="field padding-bottom--24">
+                                <label for="habit">Habit</label>
+                                <input type="habit" id="habit" placeholder="Enter Habit"/>
+                                <label for="time">Time </label>
+                                <input type="time" name="varTime" id="time"/>
+                              </div>
+                              <div class="padding-bottom--24">
+                                <button onclick="addRow()" class="btn btn-tertiary" >Add Habit</button>
+                                <button onclick="removeRow()" class="btn btn-tertiary">Remove</button>
+                                <button onclick="clearStack()" class="btn btn-tertiary">Clear</button>
+                                <button onclick="checkBox()" class="btn btn-tertiary">Update</button>
+                              </div>
+                          </div>
+                      </div>
+                      </div>
+                  </div>
+                  </div>
+                </section>
+              <section>
+              <span class="logo2" id="stackname"></span>
+              <div class="login-root2" id="movedBuilder"></div>
+              <table class="styled-table" id="habitStackTable">
+                  <thead>
+                      <tr>
+                          <th>Habit</th>
+                          <th>Time of Day</th>
+                          <th>Completion Status</th>
+                      </tr>
+                  </thead>
+                  <tbody id="habitStack">
+                  </tbody>
+               </table>
+          </section>
+    </main>
+    <footer>
+        <h2 class="text">Created by Mackenzie Cottle</h2>
+    </footer>
+    <script src="build-stack.js"></script>
+    </body>
+</html>
