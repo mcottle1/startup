@@ -593,7 +593,7 @@ function fail(err){
 
 - If you omit the await, it won't await
 
--DOM textContext sets the cild text for an element
+- DOM textContext sets the cild text for an element
 
 - DNS subdomain cs260.cs.byu.edu the whole thing is the subdomain
 
@@ -610,6 +610,18 @@ function fail(err){
 - sudo deploy.sh lets us use our account and password to execute system commands with root privileges
 
 - ssh deploy.sh provides a secure encrypted connection between two hosts over an insecure network. This connection can also be used for terminal access, file transfers, and for tunneling other applications
+
+#### What I learned from Startup Javascript deliverable
+
+- How to work with local storage to save and repopulate data elsewhere on the site
+
+- The importance of where and how you call your functions in javascript, and the flexibility that this creates
+
+- the difference between querySelector, getElementByID, and querySelectorAll
+
+- How important it is to understand the dom and how powerful it can be
+
+- The importance of HOW you store your information into variables so that it can be accessed across your javascript but also within and across specific functions (ie the checkboxes debacle
 
 #### URL
 
@@ -707,6 +719,324 @@ Headers
 | User-Agent                  | Mozilla/5.0 (Macintosh)              | The client application making the request.                                                                                                                                     |
 
 #### Service Design
+
+
+⚠ Note that service endpoints are often called an Application Programming Interface (API). This is a throwback to old desktop applications and the programming interfaces that they exposed. Sometimes the term API refers to the entire collection of endpoints, and sometimes it is used to refer to a single endpoint.
+
+Things to consider
+
+- Grammatical
+
+- Readable
+
+- Discoverable
+
+- Compatible
+
+- Simple
+
+- Documented
+
+Remote Procedure Calls (RPC) expose service endpoints as simple function calls. When RPC is used over HTTP it usually just leverages the POST HTTP verb.
+
+
+```http
+POST /updateOrder HTTP/2
+
+{"id": 2197, "date": "20220505"}
+```
+
+Representational State Transfer (REST) attempts to take advantage of the foundational principles of HTTP. REST HTTP verbs always act upon a resource. Operations on a resource impact the state of the resource as it is transferred by a REST endpoint call. This allows for the caching functionality of HTTP to work optimally. For example, GET will always return the same resource until a PUT is executed on the resource. When PUT is used, the cached resource is replaced with the updated resource.
+
+
+```http
+PUT /order/2197 HTTP/2
+
+{"date": "20220505"}
+```
+
+GraphQL focuses on the manipulation of data instead of a function call (RPC) or a resource (REST). The heart of GraphQL is a query that specifies the desired data and how it should be joined and filtered
+
+```graphql
+query {
+  getOrder(id: "2197") {
+    orders(filter: { date: { allofterms: "20220505" } }) {
+      store
+      description
+      orderedBy
+    }
+  }
+}
+```
+   
+#### Node.JS
+   
+- Allows us to interact directly with the server using javascript. one language to rule them all haha
+   
+- Node.JS packages
+   
+- Package.json
+   
+This file contains three main things: 1) Metadata about your project such as its name and the default entry JavaScript file, 2) commands that you can execute to do things like run, test, or distribute your code, and 3) packages that this project depends upon.
+   
+With JavaScript we can write code that listens on a server port (e.g. 8080), receives HTTP requests, processes them, and then responds. We can use this to create a simple web service that we then execute using Node.js.
+
+#### Node.js
+
+npm install http
+
+```js
+const http = require('http');
+const server = http.createServer(function (req, res) {
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.write('<h1>Hello Node.js!</h1>');
+  res.end();
+});
+
+server.listen(8080, () => {
+  console.log(`Web service listening on port 8080`);
+});
+```
+
+```sh
+➜ node main.js
+Web service listening on port 8080
+```
+
+#### Express
+
+```sh
+➜ npm install express
+```
+
+```js
+const express = require('express');
+const app = express();
+
+app.listen(8080);
+
+```
+```js
+app.get('/store/provo', (req, res, next) => {
+  res.send({ name: 'provo' });
+});
+```
+
+#### Debugging
+
+Fn->F5 to bring up node.js debugger
+
+npm install -g nodemon to install nodemon globally
+
+#### PM2
+
+When you run a program from the console the program will automatically terminate when you close the console or if the computer restarts. In order to keep programs running after a shutdown you need to register it as a daemon. 
+
+#### UI Testing
+
+Playwright 
+
+npm init playwright@latest
+
+Next, you want to install the Playwright extension for VS Code. Go to the extensions tab in VS Code and search for, and install, Playwright Test for VSCode.
+
+#### Endpoint testing
+
+npm install supertest -D
+
+#### What I learned from Simon Service
+
+- Fetch calls used to add the quote and image to the about page
+
+- Load scores using fetch and set locak storage to json string of response
+
+Deploy.sh file
+
+# Step 1
+printf "\n----> Build the distribution package\n"
+rm -rf dist
+mkdir dist
+cp -r public dist
+cp *.js dist
+cp package* dist
+
+# Step 2
+printf "\n----> Clearing out previous distribution on the target\n"
+ssh -i "$key" ubuntu@$hostname << ENDSSH
+rm -rf services/${service}
+mkdir -p services/${service}
+ENDSSH
+
+# Step 3
+printf "\n----> Copy the distribution package to the target\n"
+scp -r -i "$key" dist/* ubuntu@$hostname:services/$service
+
+# Step 4
+printf "\n----> Deploy the service on the target\n"
+ssh -i "$key" ubuntu@$hostname << ENDSSH
+cd services/${service}
+npm install
+pm2 restart ${service}
+ENDSSH
+
+# Step 5
+printf "\n----> Removing local copy of the distribution package\n"
+rm -rf dist
+
+- Index.js
+
+- get router, post router, use router sends index.html file
+
+- Update scores is used in post request
+   
+#### What I learned from Simon DB
+   
+
+```  
+ const { MongoClient } = require('mongodb');
+
+// Read the credentials from environment variables so that you do not accidentally check in your credentials
+const userName = process.env.MONGOUSER;
+const password = process.env.MONGOPASSWORD;
+const hostname = process.env.MONGOHOSTNAME;
+
+async function main() {
+  // Connect to the database cluster
+  //const url = `mongodb+srv://mcottle1:mcottle1byu.edu@cluster0.ca3tlc1.mongodb.net/rental`;
+  const url = `mongodb+srv://${userName}:${password}@${hostname}`;
+  const client = new MongoClient(url);
+  const collection = client.db('rental').collection('house');
+
+  // Insert a document
+  const house = {
+    name: 'Beachfront views',
+    summary: 'From your bedroom to the beach, no shoes required',
+    property_type: 'Condo',
+    beds: 1,
+  };
+  await collection.insertOne(house);
+
+  // Query the documents
+  const query = { property_type: 'Condo', beds: { $lt: 2 } };
+  const options = {
+    sort: { score: -1 },
+    limit: 10,
+  };
+
+  const cursor = collection.find(query, options);
+  const rentals = await cursor.toArray();
+  rentals.forEach((i) => console.log(i));
+}
+
+main().catch(console.error);
+```
+- Save credentials in environment files
+   
+- Environment files for macOS is .zprofile in user root directory
+   
+- To update PEM2 ssh into ubuntu with ip address and run update pem script
+   
+- Save updated pem as well
+   
+- Make sure that versions are all up to date (node, npm, etc...)
+   
+#### Simon Login What I learned
+   
+- passwords are all encrypted when they are sent to databases, or at least they should be
+   
+- don't forget to update network preferences on mongo db database to allow all connections
+   
+- edit fn keys so that you don't have to press function to access the function element of the key
+  
+```
+// CreateAuth token for a new user
+apiRouter.post('/auth/create', async (req, res) => {
+  if (await DB.getUser(req.body.email)) {
+    res.status(409).send({ msg: 'Existing user' });
+  } else {
+    const user = await DB.createUser(req.body.email, req.body.password);
+
+    // Set the cookie
+    setAuthCookie(res, user.token);
+
+    res.send({
+      id: user._id,
+    });
+  }
+});
+
+// GetAuth token for the provided credentials
+apiRouter.post('/auth/login', async (req, res) => {
+  const user = await DB.getUser(req.body.email);
+  if (user) {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      setAuthCookie(res, user.token);
+      res.send({ id: user._id });
+      return;
+    }
+  }
+  res.status(401).send({ msg: 'Unauthorized' });
+});
+
+// DeleteAuth token if stored in cookie
+apiRouter.delete('/auth/logout', (_req, res) => {
+  res.clearCookie(authCookieName);
+  res.status(204).end();
+});
+
+// GetUser returns information about a user
+apiRouter.get('/user/:email', async (req, res) => {
+  const user = await DB.getUser(req.params.email);
+  if (user) {
+    const token = req?.cookies.token;
+    res.send({ email: user.email, authenticated: token === user.token });
+    return;
+  }
+  res.status(404).send({ msg: 'Unknown' });
+});
+
+// secureApiRouter verifies credentials for endpoints
+var secureApiRouter = express.Router();
+apiRouter.use(secureApiRouter);
+
+secureApiRouter.use(async (req, res, next) => {
+  authToken = req.cookies[authCookieName];
+  const user = await DB.getUserByToken(authToken);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+});
+```
+   
+To generate a reasonable authentication token we use the `uuid` package. [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) stands for Universally Unique Identifier
+
+```js
+const uuid = require('uuid');
+
+token: uuid.v4();
+```
+   
+To hash our passwords we will use the `bcrypt` package. 
+
+```js
+const bcrypt = require('bcrypt');
+
+async function createUser(email, password) {
+  // Hash the password before we insert it into the database
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  const user = {
+    email: email,
+    password: passwordHash,
+    token: uuid.v4(),
+  };
+  await collection.insertOne(user);
+
+  return user;
+}
+```
 
 <br/>
 
