@@ -85,7 +85,7 @@ function checkBox(){
 
 function loadinitial(){
     const builderNameElement = document.querySelector('#stackname');
-    builderNameElement.textContent = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0Welcome, ' + getPlayerName();
+    builderNameElement.textContent = '\xa0Welcome, ' + getPlayerName();
     getData();
     showData();
 }

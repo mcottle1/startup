@@ -1,60 +1,103 @@
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
 const express = require('express');
 const app = express();
 const DB = require('./database.js');
 
-// The service port. In production the application is statically hosted by the service on the same port.
+const authCookieName = 'token';
+
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
-// JSON body parsing using built-in middleware
 app.use(express.json());
 
-// Serve up the application's static content
+app.use(cookieParser());
+
 app.use(express.static('public'));
 
-// Router for service endpoints
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-// GetStacks
+apiRouter.post('/auth/create', async (req, res) => {
+    if (await DB.getUser(req.body.email)) {
+      res.status(409).send({ msg: 'Existing user' });
+    } else {
+      const user = await DB.createUser(req.body.email, req.body.password);
+  
+      setAuthCookie(res, user.token);
+  
+      res.send({
+        id: user._id,
+      });
+    }
+  });
+  
+  apiRouter.post('/auth/login', async (req, res) => {
+    const user = await DB.getUser(req.body.email);
+    if (user) {
+      if (await bcrypt.compare(req.body.password, user.password)) {
+        setAuthCookie(res, user.token);
+        res.send({ id: user._id });
+        return;
+      }
+    }
+    res.status(401).send({ msg: 'Unauthorized' });
+  });
+  
+  apiRouter.delete('/auth/logout', (_req, res) => {
+    res.clearCookie(authCookieName);
+    res.status(204).end();
+  });
+  
+  apiRouter.get('/user/:email', async (req, res) => {
+    const user = await DB.getUser(req.params.email);
+    if (user) {
+      const token = req?.cookies.token;
+      res.send({ email: user.email, authenticated: token === user.token });
+      return;
+    }
+    res.status(404).send({ msg: 'Unknown' });
+  });
+  
+  var secureApiRouter = express.Router();
+  apiRouter.use(secureApiRouter);
+  
+  secureApiRouter.use(async (req, res, next) => {
+    authToken = req.cookies[authCookieName];
+    const user = await DB.getUserByToken(authToken);
+    if (user) {
+      next();
+    } else {
+      res.status(401).send({ msg: 'Unauthorized' });
+    }
+  });
+
 apiRouter.get('/stacks', async (_req, res) => {
     const stacks = await DB.getRandomStacks();
     res.send(stacks);
   });
   
-  // SubmitStack
   apiRouter.post('/stack', async (req, res) => {
     DB.addStack(req.body);
     const stacks = await DB.getRandomStacks();
     res.send(stacks);
   });
 
-// Return the application's default page if the path is unknown
-app.use((_req, res) => {
+app.use(function (err, req, res, next) {
+    res.status(500).send({ type: err.name, message: err.message });
+  });
+  
+  app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });
   });
+  
+  function setAuthCookie(res, authToken) {
+    res.cookie(authCookieName, authToken, {
+      secure: true,
+      httpOnly: true,
+      sameSite: 'strict',
+    });
+  }
   
   app.listen(port, () => {
     console.log(`Listening on port ${port}`);
   });
-
-//   //updateStacks
-//   let stacks = [];
-//   function updateStacks(newStack, stacks){
-//     for(const [i, prevStack] of stacks.entries()){
-//         if(newStack.name === prevStack.name){
-//             const halfBefore = stacks.slice(0,i);
-//             if(i < stacks.length){
-//                 const halfAfter = stacks.slice(i + 1);
-//                 stacks = halfBefore.concat(halfAfter);
-//             }else{
-//                 stacks = halfBefore
-//             }
-//             break;
-//         }
-//     }
-//     stacks.push(newStack);
-//     if(stacks.length > 6){
-//         stacks = stacks.slice(stacks.length - 6, stacks.length);
-//     }
-//     return stacks;
-//   }
