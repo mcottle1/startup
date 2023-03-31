@@ -1,6 +1,48 @@
+const stackUpdatedEvent = 'stackUpdate;'
+
 var arr = new Array();
 var boxes = new Array();
+var socket;
 const loginInnerHTML = '<div class="padding-top--5 flex-flex"><div class="padding-bottom--24 flex-flex padding-bottom--0"></div><div class="formbg-outer"><div class="formbg"><div class="formbg-inner padding-horizontal--20"><span>Add Your Habits to Your Stack!<br><br></span><div class="field padding-bottom--24"><label for="habit">Habit</label><input type="habit" id="habit" placeholder="Enter Habit"/><label for="time">Time </label><input type="time" name="varTime" id="time"/></div><div class="padding-bottom--24"><button onclick="addRow()" class="btn btn-tertiary" >Add Habit</button><button onclick="removeRow()" class="btn btn-tertiary">Remove</button><button onclick="clearStack()" class="btn btn-tertiary">Clear</button><button onclick="checkBox()" class="btn btn-tertiary">Update</button></div></div></div></div></div>';
+
+window.addEventListener('resize', function() {
+    let builder = document.getElementById("movedBuilder");
+    let ogbuilder = document.getElementById("ogBuilder");
+    if (window.innerWidth < 1000) {
+        ogbuilder.innerHTML = '';
+        builder.innerHTML = loginInnerHTML;
+    } else{
+        builder.innerHTML = '';
+        ogbuilder.innerHTML = loginInnerHTML;
+    }
+  });
+
+  window.addEventListener('beforeunload', function(event) {
+    let builder = document.getElementById("movedBuilder");
+    let ogbuilder = document.getElementById("ogBuilder");
+    if (window.innerWidth < 1000) {
+        ogbuilder.innerHTML = '';
+        builder.innerHTML = loginInnerHTML;
+    } else{
+        builder.innerHTML = '';
+        ogbuilder.innerHTML = loginInnerHTML;
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    let builder = document.getElementById("movedBuilder");
+    let ogbuilder = document.getElementById("ogBuilder");
+    if (window.innerWidth < 1000) {
+        ogbuilder.innerHTML = '';
+        builder.innerHTML = loginInnerHTML;
+    } else{
+        builder.innerHTML = '';
+        ogbuilder.innerHTML = loginInnerHTML;
+    }
+  });
+
+  
+
 function addRow() {
     getData();
     let table = document.getElementById("habitStack");
@@ -88,6 +130,7 @@ function loadinitial(){
     builderNameElement.textContent = '\xa0Welcome, ' + getPlayerName();
     getData();
     showData();
+    configureWebSocket();
 }
 
 function getPlayerName() {
@@ -109,6 +152,7 @@ async function saveTable() {
     }catch{
         this.updateStacksLocal(newTable);
     }
+    broadcastEvent(userName, stackUpdatedEvent, {});
 }
 
 function updateStacksLocal(newTable){
@@ -124,6 +168,43 @@ function updateStacksLocal(newTable){
     localStorage.setItem('stacks', JSON.stringify(tables));
 }
 
+ // Functionality for peer communication using WebSocket
+
+ function configureWebSocket() {
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    this.socket.onopen = (event) => {
+      this.displayMsg('system', 'builder', 'connected');
+    };
+    this.socket.onclose = (event) => {
+      this.displayMsg('system', 'builder', 'disconnected');
+    };
+    this.socket.onmessage = async (event) => {
+      const msg = JSON.parse(await event.data.text());
+      if (msg.type === stackUpdatedEvent) {
+        this.displayMsg('builder', msg.from, `updated their stack`);
+      }
+    };
+  }
+
+  function displayMsg(cls, from, msg) {
+    const chatText = document.querySelector('#user-messages');
+    if(chatText){
+        chatText.innerHTML =
+        `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
+    }
+  }
+
+  function broadcastEvent(from, type, value) {
+    const event = {
+      from: from,
+      type: type,
+      value: value,
+    };
+    this.socket.send(JSON.stringify(event));
+  }
+
+
 loadinitial();
 
 function delay(milliseconds) {
@@ -133,39 +214,3 @@ function delay(milliseconds) {
       }, milliseconds);
     });
   }
-
-  window.addEventListener('resize', function() {
-    let builder = document.getElementById("movedBuilder");
-    let ogbuilder = document.getElementById("ogBuilder");
-    if (window.innerWidth < 1000) {
-        ogbuilder.innerHTML = '';
-        builder.innerHTML = loginInnerHTML;
-    } else{
-        builder.innerHTML = '';
-        ogbuilder.innerHTML = loginInnerHTML;
-    }
-  });
-
-  window.addEventListener('beforeunload', function(event) {
-    let builder = document.getElementById("movedBuilder");
-    let ogbuilder = document.getElementById("ogBuilder");
-    if (window.innerWidth < 1000) {
-        ogbuilder.innerHTML = '';
-        builder.innerHTML = loginInnerHTML;
-    } else{
-        builder.innerHTML = '';
-        ogbuilder.innerHTML = loginInnerHTML;
-    }
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    let builder = document.getElementById("movedBuilder");
-    let ogbuilder = document.getElementById("ogBuilder");
-    if (window.innerWidth < 1000) {
-        ogbuilder.innerHTML = '';
-        builder.innerHTML = loginInnerHTML;
-    } else{
-        builder.innerHTML = '';
-        ogbuilder.innerHTML = loginInnerHTML;
-    }
-  });
