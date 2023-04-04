@@ -1138,7 +1138,34 @@ class PeerProxy {
 module.exports = { PeerProxy };
 ```
    
+#### What I Learned from Simon React
    
+- Steps to make your project reactable
+   
+- Reorganize project
+   
+- Create new project 
+   
+1. **Create template React application**. Run `npx create-react-app template-react`. This creates a new directory named `template-react` that contains the basic configuration and template React application code.
+   
+1. **Clean up template code**
+   1. Uninstall and NPM packages you won't use (e.g. stats, test)
+   1. Delete the unnecessary create-react-app files (e.g. images)
+   1. Rename `js` JSX files have `jsx` extension
+   1. Replace the `favicon.ico` with the Simon icon
+   1. Update `manifest.json` to represent Simon
+   
+##### CONVERT !! Each html file and js file and add react components and router
+   
+`npm install react-router-dom`
+   
+```sh
+npm install bootstrap react-bootstrap
+```
+
+```sh
+./deployReact.sh -k ~/keys/production.pem -h yourdomain.click -s simon
+```
    
 <br/>
 
