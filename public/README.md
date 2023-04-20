@@ -1167,6 +1167,70 @@ npm install bootstrap react-bootstrap
 ./deployReact.sh -k ~/keys/production.pem -h yourdomain.click -s simon
 ```
    
+#### Final Notes
+
+Cookies allow the server to store data on the client
+
+HTTP headers include Host, Content-Type, and Cookie (not language)
+
+You can use fetch in the front and back end
+
+Purposes of JSX include injecting HTML into JavaScript, componentizing HTML and allowing for composability of HTML (does not combine CSS, HTML, and JavaScript)
+
+Middleware that matches fetch request
+
+const r = await fetch('/fav/ringo',{
+ method: 'DELETE'
+});
+
+app.delete(/fav|/(.*)/,() => {})
+
+Linux Daemon starts when computer is rebooted, executes independent of user, PM2 is an example of Daemon
+- CAN fork other processes
+
+Hashing passwords improves security by making the password unreadable
+
+Routes
+ Route path='/burger' element={<B />} />
+ 
+The url /burger will render the B component
+
+websocket uses peer to peer instead of client to server
+
+Port 80 is reserved for HTTP
+
+SSH 22
+
+HTTPS 443
+
+Status codes in the 300 range are for content redirects or caching
+
+NPM install ws adds dependencies to package.json, adds websocket source code to the node_modules directory, locks the version of the websocket package for your application
+- Does not add template code for websockets to your JavaScript
+![image](https://user-images.githubusercontent.com/90581594/233449032-fc0bbabf-ef73-4c48-94e5-d3b61b32135f.png)
+
+for the request get /fav/george paul george john is logged
+
+![image](https://user-images.githubusercontent.com/90581594/233449192-5f1eb255-1ef9-4d92-be56-9ddd3ccfefa6.png)
+
+app.delete(/fav\/(.*)/, () => {}) is the matching fetch request
+
+![image](https://user-images.githubusercontent.com/90581594/233449427-d574aa0e-f01c-4d90-8f2a-1df297acc57c.png)
+
+{ name: "Walke" Score: -55} matches this MongoDB query
+
+![image](https://user-images.githubusercontent.com/90581594/233449677-916d3b9f-aec0-4a64-8e7c-2f4a7c87ac1c.png)
+
+Will console.log Client:Server:Hello
+
+![image](https://user-images.githubusercontent.com/90581594/233449865-86098f4d-5e59-4e04-8f2b-6c590da8f84d.png)
+
+Component A will initially display TacoFish
+
+
+   
+   
+   
 <br/>
 
 <hr/>
